@@ -32,5 +32,5 @@ def test_get_links_to_report():
     links = get_links_to_report(testmailbody)
     # import ipdb; ipdb.set_trace()
     assert len(links) == 1
-    assert links[0].netloc == "portal.isolarcloud.com"
+    assert "portal.isolarcloud.com" in links[0]
     return

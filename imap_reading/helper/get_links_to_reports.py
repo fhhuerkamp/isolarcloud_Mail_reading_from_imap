@@ -12,7 +12,7 @@ def get_links_to_report(html):
         the links must contain the string "target=service=getPsReport" and the netloc must be "portal.isolarcloud.com"
 
     Returns:
-        report_urls (list): List urls to the reports
+        report_urls (list): List of urls to the reports as ParseResult of urlparse
 
     """
 
@@ -23,5 +23,5 @@ def get_links_to_report(html):
     for link in links:
         link_url = urlparse(link.get('href'))
         if "target=service=getPsReport" in link_url.fragment and link_url.netloc == "portal.isolarcloud.com":
-            report_urls.append(link_url)
+            report_urls.append(link.get('href'))
     return report_urls
