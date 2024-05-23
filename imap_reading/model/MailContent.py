@@ -7,7 +7,7 @@ class MailContent:
 
     """
     defines a class for a single mail
-    
+
     """
 
     def __init__(self,mail=None):
@@ -47,7 +47,7 @@ class MailContent:
                         # import ipdb; ipdb.set_trace()
                         self.m_delivery_date = parser.parse(line[len('Delivery-date:'):].strip())
                     if line.startswith('Message-ID:'):
-                        self.message_id = line[len('Message-ID:'):].strip()
+                        self.message_id = line[len('Message-ID:'):].strip()[1:-1]
                     if line.startswith('Content-Transfer-Encoding:'):
                         self.content_transfer_encoding = line[len('Content-Transfer-Encoding:'):].strip()
                     if line.startswith('Content-Type:'):
