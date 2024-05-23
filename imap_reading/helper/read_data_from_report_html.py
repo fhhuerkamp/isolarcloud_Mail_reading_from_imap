@@ -1,9 +1,12 @@
 from bs4 import BeautifulSoup
 import pandas as pd
+from dotenv import load_dotenv
+import os
+
 
 def get_cell_text(list_td_tag):
     """
-        find a div-tag with CSS-class "cell" and return  the content as text
+        find a div-tag in a list of tags with CSS-class "cell" and return  the content as text
         limitations: returns only the first occurrence in each tag
 
         Args:
@@ -37,18 +40,20 @@ def read_data_from_report_html(html):
     # rc.append(column_header)
     for column_names in  ['el-table_1_column_'+str(i) for i in range(2,10)]:
         rc.append(get_cell_text(soup.find_all('td',class_=column_names)))
-    print(rc)
     df = pd.DataFrame(rc).T
     df.columns=column_header
-    print (df)
     return title_tag.text,df
 
 if __name__ == "__main__":
     """
-        only for testing purposes. Run the function with test data from "output.html"
+        only for testing purposes. Run the function with test data from file TEST_HTML
     """
+    load_dotenv(override=False)
+    test_html=os.environ.get("TEST_HTML")
 
-    with open("Output.html") as f:
+    with open(test_html) as f:
         html = f.read()
 
-    read_data_from_report_html(html)
+    title, dataframe = read_data_from_report_html(html)
+    print (title)
+    print (dataframe)
