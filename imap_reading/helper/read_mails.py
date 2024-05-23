@@ -5,7 +5,14 @@ from imaplib import IMAP4
 from imap_reading.model.MailContent import MailContent
 from datetime import date,timedelta
 
-def read_mails(imaphost, imapuser, imappassword, sender='system@isolarcloud.com',daysback=5):
+
+def store_mail_in_file (raw_mail, mailcontent):
+    with open(mailcontent.message_id,mode='wb') as f:
+        f.write(raw_mail)
+    return mailcontent.message_id
+
+
+def read_mails_from_mailserver(imaphost, imapuser, imappassword, sender='system@isolarcloud.com',daysback=5):
 
     """
     read mails from IMAP-Server that are comming from sender.
@@ -37,6 +44,28 @@ def read_mails(imaphost, imapuser, imappassword, sender='system@isolarcloud.com'
                         if len(item) > 50:
                             mailcontent = MailContent(item)
                             mails.append(mailcontent)
+                            store_mail_in_file(item,mailcontent)
+
     M.close()
     M.logout()
     return mails
+
+def read_mails_from_file(mail_file):
+
+    """
+    read mail from file.
+
+    Args:
+        mail_file(str) name of the file with the raw mail content.
+
+    Returns:
+        mail  as instances of MailContent-Class
+
+    """
+    mailcontent = None
+    with open(mail_file,  mode="rb") as f:
+        item = f.read()
+
+    if len(item) > 50:
+        mailcontent = MailContent(item)
+    return mailcontent
