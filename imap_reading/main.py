@@ -4,7 +4,7 @@
 
 from dotenv import load_dotenv
 import os
-from helper.read_mails import read_mails
+from helper.read_mails import read_mails_from_mailserver
 from helper.get_links_to_reports import get_links_to_report
 
 
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     user=os.environ.get("IMAPUSER")
     password=os.environ.get("IMAPPASSWORD")
     sender=os.environ.get("SENDER")
-    mails = read_mails(host,user,password,sender, daysback=5)
+    mails = read_mails_from_mailserver(host,user,password,sender, daysback=1)
 
     report_urls=[]
     for mail in mails:
