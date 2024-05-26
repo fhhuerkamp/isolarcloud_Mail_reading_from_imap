@@ -11,11 +11,11 @@ import time
 def read_url_with_selenium(url, list_css_elements,file_output=None):
     """
 
-    reads an url with selenium and returns the generated html
-    waits until some css classes are in the code
+    Reads an url with selenium
+    Waits until some css classes are in the result
+    Returns the generated html
 
-    when a name of an output file is given, then stores the html in that file
-
+    When a name of an output file is given, then stores the html in that file
 
     Example Call: read_html_with_selenium(
         'https://example.com/html_with_javascript.html',
@@ -30,12 +30,11 @@ def read_url_with_selenium(url, list_css_elements,file_output=None):
     chromedriver_autoinstaller.install()
     driver = webdriver.Chrome(options=options)
     driver.get(url)
-    html = None
     try:
         wait = WebDriverWait(driver, WAIT_TIME)
         for css_element in list_css_elements:
             wait.until(EC.presence_of_element_located((By.CLASS_NAME, css_element)))
-        time.sleep(1)
+        time.sleep(1) # solves some timing problems
         html = driver.page_source
         if file_output:
             if len(html) > 100:
@@ -43,6 +42,7 @@ def read_url_with_selenium(url, list_css_elements,file_output=None):
                 text_file.write(html)
                 text_file.close()
     except Exception as ex:
+        html = None
         print (f"######\n{ex.with_traceback}")
     finally:
         driver.quit()
