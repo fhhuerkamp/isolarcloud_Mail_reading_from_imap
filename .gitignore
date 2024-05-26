@@ -2,6 +2,8 @@
 __pycache__/
 *.pytest_cache
 *.pyc
+.ipynb_checkpoints/
 
-
+Output.html
 test_output.html
+*@alibaba.com
