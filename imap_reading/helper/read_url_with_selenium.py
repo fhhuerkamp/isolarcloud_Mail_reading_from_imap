@@ -25,13 +25,15 @@ def read_url_with_selenium(url, list_css_elements,file_output=None):
     """
 
     WAIT_TIME = 100     # max wait time for getting the CSS classes in the html-code
+    POLL_FREQUENCY = 100
     options = webdriver.ChromeOptions()
     options.add_argument('--headless=new')
     chromedriver_autoinstaller.install()
     driver = webdriver.Chrome(options=options)
     driver.get(url)
     try:
-        wait = WebDriverWait(driver, WAIT_TIME)
+
+        wait = WebDriverWait(driver, WAIT_TIME,poll_frequency=POLL_FREQUENCY)
         for css_element in list_css_elements:
             wait.until(EC.presence_of_element_located((By.CLASS_NAME, css_element)))
         time.sleep(1) # solves some timing problems
