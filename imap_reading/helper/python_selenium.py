@@ -21,12 +21,14 @@ from dotenv import load_dotenv
 
 
 
-# options = Options()
+options = webdriver.ChromeOptions()
+options.add_argument('--headless=new')
 # options.headless = True
 # driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 chromedriver_autoinstaller.install()
 
-driver = webdriver.Chrome()
+
+driver = webdriver.Chrome(options=options)
 website = os.getenv("EXAMPLE_REPORT_URL")
 driver.get(website)
 try:
@@ -42,7 +44,7 @@ try:
     #     text_file.close()
     html = driver.page_source
     if len(html) > 100:
-        text_file = open("Output1.html", "w")
+        text_file = open("Output.html", "w")
         text_file.write(html)
         text_file.close()
 except Exception as ex:
