@@ -3,6 +3,7 @@ __pycache__/
 *.pytest_cache
 *.pyc
 .ipynb_checkpoints/
+.DS_Store
 
 Output.html
 test_output.html
