@@ -1,5 +1,7 @@
 # ISolarcloud status mails
 
+## **This project is in the development phase. Some of the code is not executable**
+
 Sungrow offers a web interface (isloarcloud.com) to monitor the photovoltaic system. Status e-mails can also be defined in this web interface, which send a link to an HTML report with the aggregated data at regular intervals.
 
 
