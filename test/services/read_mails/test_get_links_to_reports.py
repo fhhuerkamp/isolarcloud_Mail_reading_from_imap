@@ -1,5 +1,5 @@
 import pytest
-from imap_reading.helper.get_links_to_reports import get_links_to_report
+from imap_reading.services.read_mails.get_links_to_reports import get_links_to_report
 import os
 from dotenv import load_dotenv
 

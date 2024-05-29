@@ -1,4 +1,4 @@
-from imap_reading.helper.read_url_with_selenium import read_url_with_selenium
+from imap_reading.services.read_report.read_url_with_selenium import read_url_with_selenium
 import os
 from dotenv import load_dotenv
 

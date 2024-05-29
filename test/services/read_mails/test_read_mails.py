@@ -1,7 +1,7 @@
-from imap_reading.helper.read_mails import read_mails_from_mailserver
+from imap_reading.services.read_mails.read_mails import read_mails_from_mailserver
 import os
 from dotenv import load_dotenv
-from imap_reading.helper.read_mails import read_mails_from_mailserver, read_mails_from_file
+from imap_reading.services.read_mails.read_mails import read_mails_from_mailserver, read_mails_from_file
 from datetime import date,timedelta
 
 
