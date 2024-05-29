@@ -4,8 +4,8 @@
 
 from dotenv import load_dotenv
 import os
-from helper.read_mails import read_mails_from_mailserver
-from helper.get_links_to_reports import get_links_to_report
+from imap_reading.services.read_mails.read_mails import read_mails_from_mailserver
+from imap_reading.services.read_mails.get_links_to_reports import get_links_to_report
 
 
 
