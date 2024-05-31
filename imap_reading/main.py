@@ -1,21 +1,17 @@
 #
 #
 #
-
-from dotenv import load_dotenv
-import os
 from imap_reading.services.read_mails.read_mails import read_mails_from_mailserver
 from imap_reading.services.read_mails.get_links_to_reports import get_links_to_report
-
+from imap_reading.helper.get_env import get_env
 
 
 
 if __name__ == "__main__":
-    load_dotenv(override=False)
-    host=os.environ.get("IMAPHOST")
-    user=os.environ.get("IMAPUSER")
-    password=os.environ.get("IMAPPASSWORD")
-    sender=os.environ.get("SENDER")
+    host=get_env("IMAPHOST")
+    user=get_env("IMAPUSER")
+    password=get_env("IMAPPASSWORD")
+    sender=get_env("SENDER")
     mails = read_mails_from_mailserver(host,user,password,sender, daysback=1)
 
     report_urls=[]

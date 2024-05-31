@@ -24,8 +24,8 @@ def read_url_with_selenium(url, list_css_elements,file_output=None):
 
     """
 
-    WAIT_TIME = 100     # max wait time for getting the CSS classes in the html-code
-    POLL_FREQUENCY = 100
+    WAIT_TIME = 10     # max wait time for getting the CSS classes in the html-code
+    POLL_FREQUENCY = 10
     options = webdriver.ChromeOptions()
     options.add_argument('--headless=new')
     chromedriver_autoinstaller.install()

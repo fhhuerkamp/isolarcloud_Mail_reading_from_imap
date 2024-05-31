@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import pandas as pd
-from dotenv import load_dotenv
-import os
+from imap_reading.helper.get_env import get_env
 
 
 def get_cell_text(list_td_tag):
@@ -48,8 +47,7 @@ if __name__ == "__main__":
     """
         only for testing purposes. Run the function with test data from file TEST_HTML
     """
-    load_dotenv(override=False)
-    test_html=os.environ.get("TEST_HTML")
+    test_html=get_env("TEST_HTML")
 
     with open(test_html) as f:
         html = f.read()
