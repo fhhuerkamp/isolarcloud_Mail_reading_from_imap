@@ -63,3 +63,4 @@ class MailContent:
         print (f"From: {self.m_from}")
         print (f"To: {self.m_to}")
         print (f"Subject: {self.subject}")
+        print (f"Date: {self.m_date}")
